@@ -4,32 +4,28 @@
 		<title>learning PHP</title>
 	</head>
 	<style>
-		.tut {
-			display: grid;
-			place-items: center;
-			height: 100vh;
-			margin: 0;
-			font-family: Courier;
-		}
 	</style>
 	<body>
-		<div class="tut">
-			<?php 
-				$name = 'Dark Matter';
-				$read = true;
+		<div class="tut">			
+			<h1>Recommended Books</h1>
 
-				if ($read) {
-					$message = "You have read $name";
-				} else {
-					$message = "you have NOT read $name";
-				}
+			<?php 
+				$books = ['Go Androids', 'The langoliers', 'Hail mary'];
 			?>
 
-			<h1>
+			<ul>
+				<!-- <?php 
+					//foreach ($books as $book) {
+					//	echo "<li>" . $book . "</li>";
+				//	}
+				?> -->
 
-			 	<!-- <?php echo $message; ?> -->
-				<?= $message ?>
-			</h1>
+				<?php 
+					foreach ($books as $book): ?>
+						<li><?= $book ?></li>
+				<?php endforeach; ?>
+				
+			</ul>
 		</div>
 	</body>
 </html>
