@@ -8,7 +8,6 @@
 	<body>
 		<div class="tut">			
 			<h1>Recommended Books</h1>
-
 			<?php 
 				// $books = ['Go Androids', 'The langoliers', 'Hail mary'];
 				
@@ -28,23 +27,29 @@
 						"author" => "Matthew Snorke",
 						"url" => 'http://example.com'
 					],
+				];
 
-				]
 
+				function filterBooks() {
+					return 'test';
+				}
 			?>
 
 			<ul>
 				<?php foreach ($books as $book) : ?>
-					<li>
-						
-						<a href="<?= $book["url"] ?>">
-							<?= $book["title"]?>
-						</a>
-					</li>
+					<?php if ($book['author'] === 'RA Salvadore')  :?>
+						<li>
+							<a href="<?= $book["url"] ?>">
+								<?= $book["title"]?>
+							</a>
+						</li>
+					<?php endif; ?>
 
 				<?php endforeach; ?>
 				
 			</ul>
+
+			<p><?= filterBooks(); ?></p>
 		</div>
 	</body>
 </html>
