@@ -30,35 +30,69 @@
 				];
 
 
-				$filterByAuthor = function ($books, $author) {
-					$arr = [];
+			// 	$filterByAuthor = function ($books, $author) {
+			// 		$arr = [];
 
-					foreach ($books as $book) {
-						if($book["author"] == $author)
-						$arr[] = $book;
-					}
+			// 		foreach ($books as $book) {
+			// 			if($book["author"] == $author)
+			// 			$arr[] = $book;
+			// 		}
 
-					return $arr;
-				};
+			// 		return $arr;
+			// 	};
 
-				$filterBooks = $filterByAuthor($books, 'Test Author');
+			// 	$filterBooks = $filterByAuthor($books, 'Chris Evans');
+			// 
+			
+			// function filter($items, $key, $value) {
+			// 	$filterItems = [];
+
+			// 	foreach ($items as $item) {
+			// 		if($item[$key] === $value) {
+			// 			$filterItems[] = $item;
+			// 		}
+			// 	}
+
+			// 	return $filterItems;
+			// }
+
+			// $filterBooks = filter($books, "author", "RA Salvadore")
+
+
+			// function
+			// function filter($items, $fn) {
+			// 	$filterItems = [];
+
+			// 	foreach ($items as $item) {
+			// 		if($fn($item)) {
+			// 			$filterItems[] = $item;
+			// 		}
+			// 	}
+
+			// 	return $filterItems;
+			// }
+
+			// $filterBooks = filter($books, function ($book) {
+			// 	return $book["author"] === 'Chris Evans';
+			// });
+
+
+			$filterBooks = array_filter($books, function ($book) {
+				return $book["author"] === 'Chris Evans';
+			});
+
 			?>
 
-			<ul>
-				<?php foreach ($books as $book) : ?>
-					<?php if ($book['author'] === 'RA Salvadore')  :?>
+			 <ul>
+				<?php foreach ($filterBooks as $book) : ?>
 						<li>
 							<a href="<?= $book["url"] ?>">
 								<?= $book["title"]?>
 							</a>
 						</li>
-					<?php endif; ?>
-
 				<?php endforeach; ?>
 				
 			</ul>
-
-			<p><?= filterBooks(); ?></p>
 		</div>
 	</body>
 </html>
