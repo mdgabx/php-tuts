@@ -30,9 +30,18 @@
 				];
 
 
-				function filterBooks() {
-					return 'test';
-				}
+				$filterByAuthor = function ($books, $author) {
+					$arr = [];
+
+					foreach ($books as $book) {
+						if($book["author"] == $author)
+						$arr[] = $book;
+					}
+
+					return $arr;
+				};
+
+				$filterBooks = $filterByAuthor($books, 'Test Author');
 			?>
 
 			<ul>
