@@ -10,11 +10,11 @@
 			<h1>Recommended Books</h1>
 			<ul>
 				<?php foreach ($filterBooks as $book) : ?>
-						<li>
-							<a href="<?= $book["url"] ?>">
-								<?= $book["title"]?>
-							</a>
-						</li>
+					<li>
+						<a href="<?= $book["url"] ?>">
+							<?= $book["title"]?>
+						</a>
+					</li>
 				<?php endforeach; ?>
 				
 			</ul>
