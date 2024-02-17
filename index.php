@@ -2,17 +2,14 @@
 
 require("functions.php");
 
-$heading = "Home";
-
 // dd($_SERVER);
 
-// if ($_SERVER["REQUEST_URI"] === '/') {
-//     echo "bg-gray-900 text-white";
-// } else {
-//     echo "text-gray-300";
-// }
+$uri = $_SERVER["REQUEST_URI"];
 
-// echo $_SERVER["REQUEST_URI"] === "/" ? "bg-gray-900 text-white" : "text-gray-300";
-
-require("views/index.view.php");
-
+if ($uri === '/') {
+    require("controllers/index.php");
+} else if ($uri === '/about') {
+    require("controllers/about.php");
+} else if ($uri === '/contact'){
+    require("controllers/contact.php");
+}
