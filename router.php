@@ -29,7 +29,6 @@ function abort($code = 404)
 
 function uriToController($uri, $routes)
 {
-
     if (array_key_exists($uri, $routes)) {
         require($routes[$uri]);
     } else {
