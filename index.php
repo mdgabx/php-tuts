@@ -1,29 +1,25 @@
 <?php
 
 require("functions.php");
-
 #require("router.php");
+require("Database.php");
 
-// comment to our mysql database
+$db = new Database();
+$posts = $db->query("SELECT * FROM posts where id = 1;")->fetch(PDO::FETCH_ASSOC);
+
+echo $posts["title"];
+
+foreach ($posts as $post) {
+  echo "<li>" . $post["title"] . "</li>";
+}
+
+
 
 // db connection string
 
-$dsn = "mysql:host=127.0.0.2;port=3006;dbname=myapp;charset=utf8mb4";
-$username = "root";
-$password = "secret";
 
-    $pdo = new PDO($dsn, $username, $password);
-    // Set PDO error mode to exceptions
-  //  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $statement = $pdo->prepare("SELECT * FROM posts");
-    $statement->execute();
-    $posts = $statement->fetchAll();
-    
-    // Output the posts
-    dd($posts);
-
-
+// Output the posts
+// dd($posts);
 
 // class Person
 // {
