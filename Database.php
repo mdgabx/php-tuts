@@ -1,34 +1,27 @@
-<?php 
-
-// comment to our mysql database
+<?php
 
 class Database
 {
-  // property
+    public $connection;
 
-  public $connection;
+    public function __construct($config, $username = "root", $password = "secret")
+    {
+        // dd("test");
+        $dsn = "mysql:" . http_build_query($config, "", ";");
+        
+        $this->connection = new PDO($dsn, $username, $password, [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]);
+    }
 
-  public function __construct()
-  {
+    public function query($query)
+    {
+        // Set PDO error mode to exceptions
+        //  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // dd("test");
-    $dsn = "mysql:host=127.0.0.2;port=3006;dbname=myapp;charset=utf8mb4";
-    $username = "root";
-    $password = "secret";
+        $statement = $this->connection->prepare($query);
+        $statement->execute();
 
-    $this->connection = new PDO($dsn, $username, $password);
-  }
-
-  public function query($query)
-  {
-
-    
-    // Set PDO error mode to exceptions
-    //  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $statement = $this->connection->prepare($query);
-    $statement->execute();
-    
-    return $statement;
-  }
+        return $statement;
+    }
 }

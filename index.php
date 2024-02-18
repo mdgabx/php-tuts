@@ -1,18 +1,20 @@
 <?php
-
 require("functions.php");
 #require("router.php");
 require("Database.php");
 
-$db = new Database();
-$posts = $db->query("SELECT * FROM posts where id = 1;")->fetch(PDO::FETCH_ASSOC);
+$config = require("config.php");
 
-echo $posts["title"];
+$db = new Database($config["database"]);
+$posts = $db->query("SELECT * FROM posts")->fetchAll();
 
-foreach ($posts as $post) {
-  echo "<li>" . $post["title"] . "</li>";
-}
+// echo $posts["title"];
 
+// foreach ($posts as $post) {
+//   echo "<li>" . $post["title"] . "</li>";
+// }
+
+dd($posts);
 
 
 // db connection string
