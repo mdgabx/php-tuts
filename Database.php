@@ -14,13 +14,13 @@ class Database
         ]);
     }
 
-    public function query($query)
+    public function query($query, $params = [])
     {
         // Set PDO error mode to exceptions
         //  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $statement = $this->connection->prepare($query);
-        $statement->execute();
+        $statement->execute($params);
 
         return $statement;
     }
