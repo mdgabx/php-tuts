@@ -1,11 +1,7 @@
 <?php
 require("functions.php");
-#require("router.php");
 require("Database.php");
-
-$config = require("config.php");
-
-$db = new Database($config["database"]);
+require("router.php");
 
 $id = $_GET["id"];
 $query = "SELECT * FROM posts where id = :id";
@@ -14,11 +10,11 @@ $posts = $db->query($query, [":id" => $id])->fetch();
 
 // echo $posts["title"];
 
-// foreach ($posts as $post) {
-//   echo "<li>" . $post["title"] . "</li>";
-// }
+foreach ($posts as $post) {
+  echo "<li>" . $post["title"] . "</li>";
+}
 
-dd($posts);
+// dd($posts);
 
 
 // db connection string
