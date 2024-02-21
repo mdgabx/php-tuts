@@ -3,16 +3,16 @@ require("functions.php");
 require("Database.php");
 require("router.php");
 
-$id = $_GET["id"];
-$query = "SELECT * FROM posts where id = :id";
+// $id = $_GET["id"];
+// $query = "SELECT * FROM posts where id = :id";
 
-$posts = $db->query($query, [":id" => $id])->fetch();
+// $posts = $db->query($query, [":id" => $id])->fetch();
 
 // echo $posts["title"];
 
-foreach ($posts as $post) {
-  echo "<li>" . $post["title"] . "</li>";
-}
+// foreach ($posts as $post) {
+//   echo "<li>" . $post["title"] . "</li>";
+// }
 
 // dd($posts);
 
