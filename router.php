@@ -1,6 +1,7 @@
 <?php
 
-$uri = parse_url($_SERVER["REQUEST_URI"])["path"];
+$routes = require('routes.php');
+
 
 // if ($uri === '/') {
 //     require("controllers/index.php");
@@ -11,13 +12,7 @@ $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
 // }
 
 
-$routes = [
-    "/" => "controllers/index.php",
-    "/about" => "controllers/about.php",
-    "/contact" => "controllers/contact.php",
-    "/notes" => "controllers/notes.php",
-    "/note" => "controllers/note.php"
-];
+
 
 function abort($code = 404)
 {
@@ -38,4 +33,6 @@ function uriToController($uri, $routes)
     }
 }
 
+
+$uri = parse_url($_SERVER["REQUEST_URI"])["path"];
 uriToController($uri, $routes);
