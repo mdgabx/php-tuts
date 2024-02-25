@@ -13,6 +13,11 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
         $errors['body'] = "A body is required";
     }
 
+    if(strlen($_POST['body']) > 500)
+    {
+        $errors['body'] = "The body can not be more than 500 characters";
+    }
+
     if(empty($errors))
     {
         $db->query("INSERT INTO notesapp.notes (body, user_id) VALUES (:body, :user_id)", [
