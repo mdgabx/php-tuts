@@ -13,7 +13,7 @@ function dd($value)
 
 function urlIs($value)
 {
-    return $_SERVER["REQUEST_URI"] === $value;
+    return $_SERVER['REQUEST_URI'] === $value;
 }
 
 function abort($code = 404)
@@ -27,19 +27,21 @@ function abort($code = 404)
 
 function authorize($condition, $status = Response::FORBIDDEN)
 {
-    if (!$condition) {
+    if (! $condition) {
         abort($status);
     }
+
+    return true;
 }
 
-function base_path($path) 
+function base_path($path)
 {
     return BASE_PATH . $path;
 }
 
-
 function view($path, $attributes = [])
 {
     extract($attributes);
-    require base_path('/views/'. $path);
+
+    require base_path('views/' . $path);
 }

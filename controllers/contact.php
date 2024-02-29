@@ -1,5 +1,5 @@
 <?php
 
 view("contact.view.php", [
-    "heading" => "About"
+    'heading' => 'Contact Us',
 ]);
