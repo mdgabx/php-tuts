@@ -25,5 +25,22 @@ if (! Validator::string($_POST['body'], 1, 1000)) {
 }
 
 
-
 //if no errors then update the note in the database
+
+if(count($errors)) {
+    return view('notes/edit.view.php', [
+        'heading' => 'Edit note',
+        'errors' => $errors,
+        'note' => $note
+    ]);
+}
+
+$db->query('update notes set body = :body where id = :id', [
+    'id'=> $_POST['id'],
+    'body'=> $_POST['body'],
+]);
+
+
+// redirect the user
+header('location: /notes');
+die();
