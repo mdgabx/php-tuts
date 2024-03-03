@@ -34,6 +34,7 @@ $user = $db->query('select * from users where email = :email', [
 
 if ($user) {
     header("location: /");
+    exit();
 } else {
     $db->query('INSERT INTO notesapp.users (password, email) VALUES(:password, :email)', [
         'password' => $password,

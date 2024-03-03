@@ -51,6 +51,11 @@ class Router
         $this->abort();
     }
 
+    public function only($key)
+    {
+        dd($key);
+    }
+
     protected function abort($code = 404)
     {
         http_response_code($code);
