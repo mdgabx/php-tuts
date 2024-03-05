@@ -1,6 +1,8 @@
 <?php
 
 namespace Core;
+use Core\Middleware\Auth;
+use Core\Middleware\Guest;
 
 class Router
 {
@@ -47,6 +49,16 @@ class Router
     {
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
+                // apply the middleware
+
+                if($route['middleware'] === 'guest') {
+                    (new Guest)->handle();
+                }
+
+                if($route['middleware'] === 'auth') {
+                   (new Auth)->handle();
+                }
+
                 return require base_path($route['controller']);
             }
         }
@@ -58,7 +70,7 @@ class Router
     {
         $this->routes[array_key_last($this->routes)]['middleware'] = $key;
 
-        dd($this->routes);
+        return $this;
     }
 
     protected function abort($code = 404)
