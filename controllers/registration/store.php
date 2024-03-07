@@ -37,7 +37,7 @@ if ($user) {
     exit();
 } else {
     $db->query('INSERT INTO notesapp.users (password, email) VALUES(:password, :email)', [
-        'password' => $password,
+        'password' => password_hash($password, PASSWORD_DEFAULT),
         'email' => $email
     ]);
 
