@@ -1,6 +1,6 @@
 <?php
 
-$_SESSION['name'] = 'Mark';
+// $_SESSION['email'] = '';
 
 view("index.view.php", [
     'heading' => 'Home',

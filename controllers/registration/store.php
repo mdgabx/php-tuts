@@ -41,10 +41,13 @@ if ($user) {
         'email' => $email
     ]);
 
+    // $_SESSION['user'] = [
+    //     'email' => $email
+    // ];
 
-    $_SESSION['user'] = [
-        'email' => $email
-    ];
+    login([
+        'email'=> $email
+    ]);
 
     header('location: /');
     exit();
