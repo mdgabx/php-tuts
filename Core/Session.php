@@ -21,4 +21,16 @@ class Session
        return $_SESSION[$key] ?? $default;
     }
 
+    public static function flash($key, $value)
+    {
+        // return $_SESSIONS['_flash']['errors'] = $form->errors();
+
+        $_SESSION['_flash'][$key] = $value;
+    }
+
+    public static function unflash() 
+    {
+        unset($_SESSION['_flashed']);
+    }
+
 }
