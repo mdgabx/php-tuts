@@ -18,6 +18,10 @@ class Session
 
     public static function get($key, $default = null)
     {
+        if(isset($_SESSION['_flash'][$key])) {
+            return $_SESSION['_flash'][$key];
+        }
+
        return $_SESSION[$key] ?? $default;
     }
 
@@ -31,6 +35,21 @@ class Session
     public static function unflash() 
     {
         unset($_SESSION['_flashed']);
+    }
+
+    public static function flush()
+    {
+        $_SESSION = [];
+    }
+
+    public static function destroy()
+    {
+        static::flush();
+        session_destroy();
+
+        $params = session_get_cookie_params();
+        setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+    
     }
 
 }
